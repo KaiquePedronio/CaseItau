@@ -13,8 +13,6 @@ app = Flask(__name__)
 api = Api(app, title='Case Itaú API', description='Kaique Pedronio Novi')
 api = api.namespace('', description='Operações Residencias e Média de preços')
 
-cors = CORS(app, resource={r"/*":{"origins":"*"}})
-
 @api.route('/residencias')
 class GetResidencias(Resource):
     @api.param('neighbourhood_group')
