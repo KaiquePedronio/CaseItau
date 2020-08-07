@@ -16,6 +16,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1fTlLwLKguvAsC8tjFdgxXabWyS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -164,10 +165,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="442" y="168" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596408146122">
+    <state x="442" y="168" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596824582567">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="442" y="168" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1596408146122" />
+    <state x="442" y="168" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1596824582567" />
     <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1596563836767">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -192,5 +193,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="7" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1596425199367" />
+    <state x="492" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596824640360">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="492" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1596824640359" />
   </component>
 </project>
