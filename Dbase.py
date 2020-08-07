@@ -17,7 +17,7 @@ class Dbase:
         return conn, cursor
 
     def CreateDatabase(self):
-        conn = sqlite3.connect('CaseNeon.sqlite3')
+        conn = sqlite3.connect('CaseItau.sqlite3')
         cursor = conn.cursor()
 
         return conn, cursor

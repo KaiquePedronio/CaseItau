@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import json
 import jsonify
-conn = sqlite3.connect('CaseNeon.sqlite3')
+conn = sqlite3.connect('CaseItau.sqlite3')
 cursor = conn.cursor()
 
 #

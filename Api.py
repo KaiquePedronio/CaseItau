@@ -15,7 +15,7 @@ api = api.namespace('', description='Operações Residencias e Média de preços
 class GetResidencias(Resource):
     @api.param('neighbourhood_group')
     def get(self):
-        conn = sqlite3.connect('CaseNeon.sqlite3')
+        conn = sqlite3.connect('CaseItau.sqlite3')
         cursor = conn.cursor()
 
         neighbourhood_group = request.args.get('neighbourhood_group')
@@ -33,7 +33,7 @@ class GetResidencias(Resource):
     def post(self):
         json_data = request.get_json(force=True)
 
-        conn = sqlite3.connect('CaseNeon.sqlite3')
+        conn = sqlite3.connect('CaseItau.sqlite3')
         cursor = conn.cursor()
 
         id = json_data['id']
@@ -50,7 +50,7 @@ class GetResidencias(Resource):
 @api.param('neighbourhood_group')
 class GetPrecoMedio(Resource):
     def get(self):
-        conn = sqlite3.connect('CaseNeon.sqlite3')
+        conn = sqlite3.connect('CaseItau.sqlite3')
         cursor = conn.cursor()
 
         neighbourhood_group = request.args.get('neighbourhood_group')
