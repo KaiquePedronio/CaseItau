@@ -8,10 +8,10 @@ from flask import jsonify
 from flask_cors import CORS
 import os
 
-
 app = Flask(__name__)
 api = Api(app, title='Case Itaú API', description='Kaique Pedronio Novi')
 api = api.namespace('', description='Operações Residencias e Média de preços')
+
 
 @api.route('/residencias')
 class GetResidencias(Resource):
@@ -66,10 +66,13 @@ class GetPrecoMedio(Resource):
 
 
 if __name__ == '__main__':
-    pathresidenci, pathmediapreco = Transform(r"C:\Users\kaiqu\PycharmProjects\CaseItau\bases\airbnb_ny_2019.csv",
-              r"C:\Users\kaiqu\PycharmProjects\CaseItau\bases\mapeamento_vizinhanca.csv").transform()
 
-    conn, cursor = Dbase(pathresidenci, pathmediapreco).Main()
+    pathresidenci_git, pathmediapreco_git = Transform(r"https://raw.githubusercontent.com/KaiquePedronio/CaseItau"
+                                                      r"/master/bases/airbnb_ny_2019.csv",
+                                                      r"https://raw.githubusercontent.com/KaiquePedronio/CaseItau/master"
+                                                      r"/bases/mapeamento_vizinhanca.csv").transform()
+
+    conn, cursor = Dbase(pathresidenci_git, pathmediapreco_git).Main()
 
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
