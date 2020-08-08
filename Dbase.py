@@ -1,17 +1,20 @@
 import sqlite3
 import pandas as pd
+import requests
+import io
 
 
 class Dbase:
 
-    def __init__(self, pathresidenci, pathmediapreco):
-        self.pathresidenci = pathresidenci
-        self.pathmediapreco = pathmediapreco
+    def __init__(self, pathresidenci_git, pathmediapreco_git):
+        self.pathresidenci_git = pathresidenci_git
+        self.pathmediapreco_git = pathmediapreco_git
 
     def Main(self):
         conn, cursor = self.CreateDatabase()
         self.CreateTables(conn, cursor)
-        self.LoadFilestoTables(conn)
+        self.DeleteDatas(conn, cursor)
+        self.LoadFilestoTables(conn, cursor)
         conn.close()
 
         return conn, cursor
@@ -54,12 +57,26 @@ class Dbase:
 
                                     """)
 
-    def LoadFilestoTables(self, conn):
-        df = pd.read_csv(self.pathresidenci, sep=",", encoding='utf8')
-        df.to_sql('residencias', conn, if_exists='append', index=False)
+    def DeleteDatas(self, conn, cursor):
+        cursor.execute("DELETE FROM residencias")
+        cursor.execute("DELETE FROM media_preco")
 
-        df = pd.read_csv(self.pathmediapreco, sep=",", encoding='utf8')
-        df.to_sql('media_preco', conn, if_exists='append', index=False)
+    def LoadFilestoTables(self, conn, cursor):
+        download_airbnb = requests.get(self.pathresidenci_git).content
+        download_mapeamento = requests.get(self.pathmediapreco_git).content
 
-# if __name__ == '__main__':
-#     Dbase().Main()
+        df_residenci = pd.read_csv(io.StringIO(download_airbnb.decode('utf-8')), sep=",")
+        df_mapeamento = pd.read_csv(io.StringIO(download_mapeamento.decode('utf-8')), sep=",")
+
+        df_residenci.to_sql('residencias', conn, if_exists='append', index=False)
+        df_mapeamento.to_sql('media_preco', conn, if_exists='append', index=False)
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+
+#if __name__ == '__main__':
+#    pathresidenci_git = r"https://raw.githubusercontent.com/KaiquePedronio/CaseItau/master/bases_tratadas/residencias.csv"
+#    pathmediapreco_git = r"https://raw.githubusercontent.com/KaiquePedronio/CaseItau/master/bases_tratadas/media_preco.csv"
+#    Dbase(pathresidenci_git, pathmediapreco_git).Main()
