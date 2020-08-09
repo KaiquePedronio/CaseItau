@@ -29,7 +29,7 @@ class GetResidencias(Resource):
 
         return Response(df.to_json(orient="records"), mimetype='application/json')
 
-    like = api.model('PrecoMedio', {'id': fields.Integer('ID da residencia'), 'like': fields.Boolean('Like booleano')})
+    like = api.model('Residencias', {'id': fields.Integer('ID da residencia'), 'like': fields.Boolean('Like booleano')})
 
     @api.expect(like)
     def post(self):
