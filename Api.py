@@ -7,11 +7,12 @@ import sqlite3
 from flask import jsonify
 from flask_cors import CORS
 import os
+from werkzeug.contrib.fixers import ProxyFix
 
 app = Flask(__name__)
 api = Api(app, title='Case Itaú API', description='Kaique Pedronio Novi')
 api = api.namespace('', description='Operações Residencias e Média de preços')
-
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 @api.route('/residencias')
 class GetResidencias(Resource):
