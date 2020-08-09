@@ -1,1 +1,2 @@
-web: python Api.py
+web: gunicorn wsgi:Api
+
